@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpCode - Css code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* changed to a radial gradient as requested */
+            background: radial-gradient(circle at center, #1e293b, #000000, #1e293b);
+            /* primary text color set to a blue tint with shadow */
+            color: #38bdf8;
+            
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+    
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: #38bdf8;
+            margin-bottom: 50px;
+            animation: slideDown 0.6s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px #071d33, 2px 2px 4px #212121;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px #38bdf8;
+            animation: slideUp 0.6s ease;
+        }
+
+        .section h2 {
+            color: #38bdf8;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+
+        .css-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .css-title {
+            font-weight: 700;
+            color: #38bdf8;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            border: 1px solid #444;
+        }
+
+        .demo {
+            margin-top: 15px;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+
+        .demo-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .demo-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .grid-item {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .flex-demo {
+            display: flex;
+            gap: 10px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .flex-item {
+            background: #764ba2;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .gradient-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .animation-demo {
+            animation: pulse 2s infinite;
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .transform-demo {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .transform-demo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .shadow-demo {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .position-demo {
+            position: relative;
+            height: 150px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .abs-item {
+            position: absolute;
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .color-box {
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin: 5px 0;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #f0f0f0;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .media-query-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .responsive-box {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .media-query-demo {
+                grid-template-columns: 1fr;
+            }
+            .color-palette {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .filter-demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .filter-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .blur { filter: blur(3px); }
+        .brightness { filter: brightness(150%); }
+        .contrast { filter: contrast(150%); }
+        .grayscale { filter: grayscale(100%); }
+        .sepia { filter: sepia(100%); }
+        .hue { filter: hue-rotate(90deg); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Advanced CSS Guide</h1>
+            <p>Complete Reference with Beautiful Examples & Interactive Demos</p>
+        </header>
+        <!-- link back to menu.html -->
+        <div style="text-align:center; margin:20px 0;">
+            <button onclick="window.location.href='jumpcode-code.html'" style="padding:10px 20px; font-size:1em; border:none; border-radius:8px; background:#38bdf8; color:#0f172a; cursor:pointer;">Go to Menu</button>
+        </div>
+
+        <!-- SELECTORS -->
+        <div class="section">
+            <h2>🎯 CSS Selectors</h2>
+
+            <div class="css-card">
+                <div class="css-title">Universal & Element Selectors</div>
+                <div class="description">Target all or specific HTML elements</div>
+                <div class="code-block">* { }                    /* All elements */
+div { }                  /* All divs */
+.class { }              /* All elements with class */
+#id { }                 /* Element with ID */
+div.class { }           /* Divs with class */
+div#id { }              /* Div with specific ID */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Combinator Selectors</div>
+                <div class="description">Select based on relationships</div>
+                <div class="code-block">div p { }               /* All p inside div (descendants) */
+div > p { }             /* Direct p children of div */
+div + p { }             /* p immediately after div */
+div ~ p { }             /* All p that follow div */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Pseudo-classes & Pseudo-elements</div>
+                <div class="description">Special element states and parts</div>
+                <div class="code-block">a:hover { }             /* Mouse over link */
+a:active { }            /* Active link */
+a:visited { }           /* Visited link */
+input:focus { }         /* Focused input */
+li:first-child { }      /* First child */
+li:last-child { }       /* Last child */
+li:nth-child(2n) { }    /* Every 2nd child */
+p::first-line { }       /* First line of paragraph */
+p::before { }           /* Before content */
+p::after { }            /* After content */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Attribute Selectors</div>
+                <div class="description">Select by attributes</div>
+                <div class="code-block">input[type="text"] { }  /* Input with type=text */
+a[href^="https"] { }    /* Link starting with https */
+a[href$=".pdf"] { }     /* Link ending with .pdf */
+a[href*="example"] { }  /* Link containing example */
+img[alt] { }            /* Images with alt attribute */</div>
+            </div>
+        </div>
+
+        <!-- BOX MODEL -->
+        <div class="section">
+            <h2>📦 Box Model & Spacing</h2>
+
+            <div class="css-card">
+                <div class="css-title">Margin (Outside Space)</div>
+                <div class="description">Space outside the element border</div>
+                <div class="code-block">margin: 20px;              /* All sides */
+margin: 10px 20px;         /* Top/bottom, left/right */
+margin: 10px 20px 30px;    /* Top, left/right, bottom */
+margin: 10px 20px 30px 40px; /* Top, right, bottom, left */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 30px;
+margin-left: 40px;
+margin: auto;              /* Center element */</div>
+                <div class="demo">
+                    <div class="demo-box" style="margin: 30px;">Box with 30px margin</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Padding (Inside Space)</div>
+                <div class="description">Space inside the element border</div>
+                <div class="code-block">padding: 20px;
+padding: 10px 20px;
+padding: 10px 20px 30px 40px;
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 30px;
+padding-left: 40px;</div>
+                <div class="demo">
+                    <div class="demo-box" style="padding: 40px;">Box with 40px padding</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Box-sizing</div>
+                <div class="description">Control how element size is calculated</div>
+                <div class="code-block">box-sizing: content-box;  /* Default: size = content */
+box-sizing: border-box;   /* Size includes padding + border */</div>
+                <div class="demo">
+                    <p style="color: #555; margin: 10px 0;">✓ Use <code style="background: #f0f0f0; padding: 2px 6px;">border-box</code> for consistent sizing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLORS & BACKGROUNDS -->
+        <div class="section">
+            <h2>🌈 Colors & Backgrounds</h2>
+
+            <div class="css-card">
+                <div class="css-title">Color Formats</div>
+                <div class="description">Different ways to specify colors</div>
+                <div class="code-block">color: red;                    /* Color names */
+color: #ff0000;               /* Hex color */
+color: rgb(255, 0, 0);        /* RGB */
+color: rgba(255, 0, 0, 0.5);  /* RGB with alpha */
+color: hsl(0, 100%, 50%);     /* Hue, Saturation, Lightness */
+color: hsla(0, 100%, 50%, 0.5); /* HSL with alpha */</div>
+                <div class="demo">
+                    <div class="color-palette">
+                        <div class="color-box" style="background-color: #667eea;">#667eea</div>
+                        <div class="color-box" style="background-color: #764ba2;">#764ba2</div>
+                        <div class="color-box" style="background-color: #f093fb;">#f093fb</div>
+                        <div class="color-box" style="background-color: #4d96ff;">#4d96ff</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Gradients</div>
+                <div class="description">Smooth color transitions</div>
+                <div class="code-block">/* Linear Gradient */
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+/* Radial Gradient */
+background: radial-gradient(circle, #667eea, #764ba2);
+
+/* Multiple stops */
+background: linear-gradient(90deg, red 0%, yellow 50%, blue 100%);
+
+/* With direction */
+background: linear-gradient(to bottom, #667eea, #764ba2);</div>
+                <div class="demo">
+                    <div class="gradient-demo">Linear Gradient Example</div>
+                    <div style="background: radial-gradient(circle, #667eea, #764ba2); padding: 30px; border-radius: 8px; color: white; text-align: center; font-weight: 600; margin: 10px 0;">Radial Gradient Example</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Background Properties</div>
+                <div class="description">Control background appearance</div>
+                <div class="code-block">background-color: #f0f0f0;
+background-image: url('image.jpg');
+background-size: cover;         /* Fill entire area */
+background-size: contain;       /* Fit inside area */
+background-size: 100px 50px;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;  /* Fixed while scrolling */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Opacity</div>
+                <div class="description">Control transparency</div>
+                <div class="code-block">opacity: 1;      /* Fully opaque */
+opacity: 0.75;   /* 75% opaque */
+opacity: 0.5;    /* 50% opaque */
+opacity: 0;      /* Fully transparent */</div>
+                <div class="demo">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <div class="demo-box" style="opacity: 1;">1.0</div>
+                        <div class="demo-box" style="opacity: 0.75;">0.75</div>
+                        <div class="demo-box" style="opacity: 0.5;">0.5</div>
+                        <div class="demo-box" style="opacity: 0.25;">0.25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BORDERS & SHADOWS -->
+        <div class="section">
+            <h2>✨ Borders & Shadows</h2>
+
+            <div class="css-card">
+                <div class="css-title">Borders</div>
+                <div class="description">Element borders and styling</div>
+                <div class="code-block">border: 2px solid #667eea;
+border-width: 2px;
+border-style: solid;           /* solid, dashed, dotted, double */
+border-color: #667eea;
+border-top: 3px solid red;
+border-radius: 8px;            /* Round corners */
+border-radius: 50%;            /* Circle */
+border-radius: 10px 20px 30px 40px; /* Different corners */</div>
+                <div class="demo">
+                    <div style="border: 3px solid #667eea; padding: 15px; border-radius: 8px; text-align: center;">Solid Border</div>
+                    <div style="border: 3px dashed #764ba2; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">Dashed Border</div>
+                    <div style="border: 3px dotted #f093fb; padding: 15px; border-radius: 8px; text-align: center;">Dotted Border</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Box Shadow</div>
+                <div class="description">Drop shadows for elements</div>
+                <div class="code-block">box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+box-shadow: inset 0 0 10px rgba(0,0,0,0.1); /* Inset shadow */
+box-shadow: 0 0 20px #667eea;  /* Glow effect */</div>
+                <div class="demo">
+                    <div class="shadow-demo">Box with shadow</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Text Shadow</div>
+                <div class="description">Shadows for text</div>
+                <div class="code-block">text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+text-shadow: 0 0 10px #667eea;
+text-shadow: 3px 3px 0 red, 6px 6px 0 blue;
+text-shadow: -2px -2px 4px rgba(255,255,255,0.5); /* Inset text */</div>
+                <div class="demo">
+                    <p style="font-size: 2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin: 10px 0;">Text with Shadow</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAYOUT -->
+        <div class="section">
+            <h2>📐 Layout Systems</h2>
+
+            <div class="css-card">
+                <div class="css-title">Display Property</div>
+                <div class="description">Control element layout behavior</div>
+                <div class="code-block">display: block;        /* Full width, new line */
+display: inline;       /* No width, same line */
+display: inline-block;  /* Inline but respects dimensions */
+display: flex;         /* Flexible layout */
+display: grid;         /* Grid layout */
+display: none;         /* Hide element */
+display: contents;     /* Ignore box, keep children */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Flexbox</div>
+                <div class="description">Flexible one-dimensional layout</div>
+                <div class="code-block">display: flex;
+flex-direction: row;           /* row, column, row-reverse */
+justify-content: center;       /* Main axis alignment */
+align-items: center;           /* Cross axis alignment */
+align-content: center;         /* Multi-line alignment */
+gap: 10px;                    /* Space between items */
+flex-wrap: wrap;              /* Wrap to next line */
+flex: 1;                      /* Grow proportionally */</div>
+                <div class="demo">
+                    <div class="flex-demo">
+                        <div class="flex-item">Item 1</div>
+                        <div class="flex-item">Item 2</div>
+                        <div class="flex-item">Item 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">CSS Grid</div>
+                <div class="description">Flexible two-dimensional layout</div>
+                <div class="code-block">display: grid;
+grid-template-columns: 1fr 1fr 1fr;        /* 3 equal columns */
+grid-template-columns: repeat(3, 1fr);    /* Same as above */
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-template-rows: 100px 200px;
+gap: 10px;
+grid-column: 1 / 3;           /* Span multiple columns */
+grid-row: 1 / 4;              /* Span multiple rows */</div>
+                <div class="demo">
+                    <div class="grid-demo">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">5</div>
+                        <div class="grid-item">6</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Position Property</div>
+                <div class="description">Control element positioning</div>
+                <div class="code-block">position: static;      /* Default flow */
+position: relative;    /* Relative to normal position */
+position: absolute;    /* Relative to positioned parent */
+position: fixed;       /* Relative to viewport */
+position: sticky;      /* Between relative and fixed */
+
+top: 10px;
+right: 20px;
+bottom: 30px;
+left: 40px;
+z-index: 100;          /* Stacking order */</div>
+                <div class="demo">
+                    <div class="position-demo">
+                        <div class="abs-item" style="top: 10px; left: 10px;">Top-Left</div>
+                        <div class="abs-item" style="top: 10px; right: 10px;">Top-Right</div>
+                        <div class="abs-item" style="bottom: 10px; left: 10px;">Bottom-Left</div>
+                        <div class="abs-item" style="bottom: 10px; right: 10px;">Bottom-Right</div>
+                        <div class="abs-item" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">Center</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSFORMS & ANIMATIONS -->
+        <div class="section">
+            <h2>🎬 Transforms & Animations</h2>
+
+            <div class="css-card">
+                <div class="css-title">Transform 2D</div>
+                <div class="description">Modify element appearance</div>
+                <div class="code-block">transform: scale(1.5);        /* Resize */
+transform: rotate(45deg);      /* Rotate */
+transform: translateX(20px);   /* Move horizontally */
+transform: translateY(30px);   /* Move vertically */
+transform: skew(10deg);        /* Skew */
+transform: scale(1.1) rotate(5deg);  /* Combine multiple */</div>
+                <div class="demo">
+                    <div class="transform-demo">Hover me to transform</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Transition</div>
+                <div class="description">Smooth property changes</div>
+                <div class="code-block">transition: all 0.3s ease;
+transition: background-color 0.5s ease-in-out;
+transition: transform 0.2s linear;
+transition-property: transform;
+transition-duration: 0.3s;
+transition-timing-function: ease;
+transition-delay: 0.1s;</div>
+                <div class="demo">
+                    <button onclick="this.style.background='#f093fb'; this.style.transform='scale(1.2)'; this.style.borderRadius='50px';">Click for transition</button>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Animation & Keyframes</div>
+                <div class="description">Keyframe-based animations</div>
+                <div class="code-block">@keyframes slideIn {
+  0% { 
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+animation: slideIn 1s ease-out;
+animation-name: slideIn;
+animation-duration: 1s;
+animation-timing-function: ease-out;
+animation-delay: 0s;
+animation-iteration-count: infinite;
+animation-direction: alternate;</div>
+                <div class="demo">
+                    <div class="animation-demo">Animated Element</div>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Filter Effects</div>
+                <div class="description">Apply visual effects</div>
+                <div class="code-block">filter: blur(5px);
+filter: brightness(150%);
+filter: contrast(150%);
+filter: grayscale(100%);
+filter: sepia(100%);
+filter: hue-rotate(90deg);
+filter: invert(100%);
+filter: saturate(200%);
+filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));</div>
+                <div class="demo">
+                    <div class="filter-demo">
+                        <div class="filter-item blur" title="Blur"></div>
+                        <div class="filter-item brightness" title="Brightness"></div>
+                        <div class="filter-item contrast" title="Contrast"></div>
+                        <div class="filter-item grayscale" title="Grayscale"></div>
+                        <div class="filter-item sepia" title="Sepia"></div>
+                        <div class="filter-item hue" title="Hue Rotate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TYPOGRAPHY -->
+        <div class="section">
+            <h2>📝 Typography</h2>
+
+            <div class="css-card">
+                <div class="css-title">Font Properties</div>
+                <div class="description">Control text appearance</div>
+                <div class="code-block">font-family: Arial, sans-serif;
+font-size: 16px;               /* px, em, rem, % */
+font-weight: 700;              /* 100-900, bold, normal */
+font-style: italic;            /* italic, normal */
+font-variant: small-caps;
+line-height: 1.5;              /* Line spacing */
+letter-spacing: 2px;           /* Letter spacing */
+word-spacing: 5px;             /* Word spacing */</div>
+                <div class="demo">
+                    <p style="font-size: 1.2em;">Normal text</p>
+                    <p style="font-weight: 700;">Bold text</p>
+                    <p style="font-style: italic;">Italic text</p>
+                    <p style="text-decoration: underline;">Underlined text</p>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Text Alignment & Transform</div>
+                <div class="description">Position and style text</div>
+                <div class="code-block">text-align: left;              /* left, center, right, justify */
+vertical-align: top;           /* top, middle, bottom, baseline */
+text-decoration: underline;    /* none, underline, overline, line-through */
+text-transform: uppercase;     /* uppercase, lowercase, capitalize */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+text-indent: 2em;
+white-space: nowrap;           /* Prevent wrapping */
+word-break: break-word;        /* Break long words */
+overflow: hidden;
+text-overflow: ellipsis;       /* ... for overflow */</div>
+                <div class="demo">
+                    <p style="text-align: center;">Center aligned</p>
+                    <p style="text-align: right;">Right aligned</p>
+                    <p style="text-transform: uppercase;">uppercase text</p>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Web Fonts</div>
+                <div class="description">Use custom fonts</div>
+                <div class="code-block">/* Import from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Or use @font-face */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('font.woff2') format('woff2');
+}
+
+/* Use the font */
+body {
+  font-family: 'Roboto', sans-serif;
+}</div>
+            </div>
+        </div>
+
+        <!-- RESPONSIVE DESIGN -->
+        <div class="section">
+            <h2>📱 Responsive Design</h2>
+
+            <div class="css-card">
+                <div class="css-title">Media Queries</div>
+                <div class="description">Styles for different screen sizes</div>
+                <div class="code-block">/* Default styles */
+body { font-size: 16px; }
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+  body { font-size: 18px; }
+}
+
+/* Desktops (1024px and up) */
+@media (min-width: 1024px) {
+  body { font-size: 20px; }
+}
+
+/* Print styles */
+@media print {
+  body { color: black; }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background: #222; color: #fff; }
+}</div>
+                <div class="demo">
+                    <div class="media-query-demo">
+                        <div class="responsive-box">Mobile First</div>
+                        <div class="responsive-box">Tablet</div>
+                        <div class="responsive-box">Desktop</div>
+                    </div>
+                    <p style="color: #555; margin: 10px 0; font-size: 0.9em;">Resize your browser to see responsive changes</p>
+                </div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Viewport Meta Tag</div>
+                <div class="description">Essential for responsive design</div>
+                <div class="code-block">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Flexible Units</div>
+                <div class="description">Use relative sizing</div>
+                <div class="code-block">px    /* Pixels - fixed size */
+em    /* Relative to font-size */
+rem   /* Relative to root font-size */
+%     /* Relative to parent */
+vw    /* Viewport width */
+vh    /* Viewport height */
+vmin  /* Smaller of vw/vh */
+vmax  /* Larger of vw/vh */</div>
+            </div>
+        </div>
+
+        <!-- ADVANCED FEATURES -->
+        <div class="section">
+            <h2>🚀 Advanced Features</h2>
+
+            <div class="css-card">
+                <div class="css-title">CSS Variables (Custom Properties)</div>
+                <div class="description">Reusable values throughout CSS</div>
+                <div class="code-block">:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --spacing: 10px;
+  --border-radius: 8px;
+}
+
+button {
+  background-color: var(--primary-color);
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+}</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Clip-path</div>
+                <div class="description">Create complex shapes</div>
+                <div class="code-block">clip-path: circle(50%);
+clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+clip-path: inset(10px 20px 30px 40px);
+clip-path: ellipse(50% 75%);</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Backdrop Filter</div>
+                <div class="description">Blur background behind element</div>
+                <div class="code-block">backdrop-filter: blur(10px);
+backdrop-filter: brightness(80%);
+background-color: rgba(255, 255, 255, 0.7);  /* Combine for effect */</div>
+            </div>
+
+            <div class="css-card">
+                <div class="css-title">Overflow</div>
+                <div class="description">Handle content overflow</div>
+                <div class="code-block">overflow: visible;    /* Default - show overflow */
+overflow: hidden;     /* Hide overflow */
+overflow: scroll;     /* Always show scrollbar */
+overflow: auto;       /* Show scrollbar if needed */
+overflow-x: auto;     /* Horizontal scroll only */
+overflow-y: hidden;   /* Hide vertical overflow */</div>
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="section">
+            <div class="highlight">
+                <strong>💡 Pro Tips:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Use <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">rem</code> for font sizes and <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">em</code> for component-relative sizes</li>
+                    <li>Always include <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">box-sizing: border-box</code> in your reset CSS</li>
+                    <li>Use CSS variables for colors, spacing, and other repeated values</li>
+                    <li>Mobile-first approach: style for mobile, then add media queries for larger screens</li>
+                    <li>Combine flexbox for 1D layouts and grid for 2D layouts</li>
+                    <li>Use transform and opacity for animations (better performance)</li>
+                    <li>Always test on different devices and browsers</li>
+                    <li>Keep specificity low by using classes instead of IDs</li>
+                    <li>Use CSS preprocessors (Sass, Less) for complex projects</li>
+                </ul>
+            </div>.
+        </div>
+    </div>
+</body>
+</html>

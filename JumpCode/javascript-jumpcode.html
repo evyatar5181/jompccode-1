@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpCode - JavaScript code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* changed to a radial gradient as requested */
+            background: radial-gradient(circle at center, #1e293b, #000000, #1e293b);
+            /* primary text color set to a blue tint with shadow */
+            color: #38bdf8;
+            
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: slideDown 0.6s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideUp 0.6s ease;
+        }
+
+        .section h2 {
+            color: #38bdf8;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+
+        .code-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .code-title {
+            font-weight: 700;
+            color: #38bdf8;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            border: 1px solid #444;
+        }
+
+        .demo {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            border: 2px solid #f093fb;
+        }
+
+        .output {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #f093fb;
+            box-shadow: 0 0 10px rgba(240, 147, 251, 0.3);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .example-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #f0f0f0;
+            font-weight: 600;
+            color: #f5576c;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .method-box {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #b3d9ff;
+        }
+
+        .method-name {
+            font-weight: 600;
+            color: #f5576c;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 8px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .example-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ JavaScript Guide</h1>
+            <p>Complete Reference with Code Examples & Interactive Demonstrations</p>
+        </header>
+        <!-- link back to menu.html -->
+        <div style="text-align:center; margin:20px 0;">
+            <button onclick="window.location.href='jumpcode-code.html'" style="padding:10px 20px; font-size:1em; border:none; border-radius:8px; background:#38bdf8; color:#0f172a; cursor:pointer;">Go to Menu</button>
+        </div>
+
+        <!-- VARIABLES & DATA TYPES -->
+        <div class="section">
+            <h2>📦 Variables & Data Types</h2>
+
+            <div class="code-card">
+                <div class="code-title">var, let, const</div>
+                <div class="description">Declaring variables with different scopes</div>
+                <div class="code-block">var name = "John";      // Function scoped, can be redeclared
+let age = 25;           // Block scoped, can be reassigned
+const email = "john@example.com"; // Block scoped, cannot be reassigned</div>
+                <div class="demo">
+                    <button onclick="varLetConstDemo()">Run Demo</button>
+                    <div class="output" id="demo1"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Primitive Data Types</div>
+                <div class="description">Basic data types in JavaScript</div>
+                <div class="code-block">let str = "Hello";          // String
+let num = 42;              // Number
+let bool = true;           // Boolean
+let nothing = null;        // Null
+let undef = undefined;     // Undefined
+let sym = Symbol("id");    // Symbol
+let big = 123n;            // BigInt</div>
+                <div class="demo">
+                    <button onclick="dataTypesDemo()">Run Demo</button>
+                    <div class="output" id="demo2"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Objects & Arrays</div>
+                <div class="description">Complex data structures</div>
+                <div class="code-block">let person = {
+  name: "John",
+  age: 25,
+  email: "john@example.com"
+};
+
+let colors = ["red", "blue", "green"];
+let mixed = [1, "two", true, {name: "obj"}];</div>
+                <div class="demo">
+                    <button onclick="objectsArraysDemo()">Run Demo</button>
+                    <div class="output" id="demo3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPERATORS -->
+        <div class="section">
+            <h2>🔧 Operators</h2>
+
+            <div class="code-card">
+                <div class="code-title">Arithmetic Operators</div>
+                <div class="description">Basic math operations</div>
+                <div class="code-block">let a = 10, b = 3;
+console.log(a + b);    // 13 (Addition)
+console.log(a - b);    // 7  (Subtraction)
+console.log(a * b);    // 30 (Multiplication)
+console.log(a / b);    // 3.33 (Division)
+console.log(a % b);    // 1  (Modulo)
+console.log(a ** b);   // 1000 (Exponentiation)</div>
+                <div class="demo">
+                    <button onclick="arithmeticDemo()">Run Demo</button>
+                    <div class="output" id="demo4"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Comparison Operators</div>
+                <div class="description">Comparing values</div>
+                <div class="code-block">let a = 5, b = "5";
+console.log(a == b);   // true (Equal value)
+console.log(a === b);  // false (Equal value AND type)
+console.log(a != b);   // false (Not equal)
+console.log(a !== b);  // true (Not equal or type)
+console.log(a > 3);    // true (Greater than)
+console.log(a < 10);   // true (Less than)</div>
+                <div class="demo">
+                    <button onclick="comparisonDemo()">Run Demo</button>
+                    <div class="output" id="demo5"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Logical Operators</div>
+                <div class="description">Boolean logic</div>
+                <div class="code-block">let a = true, b = false;
+console.log(a && b);   // false (AND)
+console.log(a || b);   // true (OR)
+console.log(!a);       // false (NOT)
+
+if (a && !b) {
+  console.log("Both conditions are true!");
+}</div>
+                <div class="demo">
+                    <button onclick="logicalDemo()">Run Demo</button>
+                    <div class="output" id="demo6"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Assignment Operators</div>
+                <div class="description">Assigning and updating values</div>
+                <div class="code-block">let x = 10;
+x += 5;   // x = x + 5  (15)
+x -= 3;   // x = x - 3  (12)
+x *= 2;   // x = x * 2  (24)
+x /= 4;   // x = x / 4  (6)
+x %= 2;   // x = x % 2  (0)
+console.log(x);</div>
+                <div class="demo">
+                    <button onclick="assignmentDemo()">Run Demo</button>
+                    <div class="output" id="demo7"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTROL FLOW -->
+        <div class="section">
+            <h2>🎯 Control Flow</h2>
+
+            <div class="code-card">
+                <div class="code-title">if, else if, else</div>
+                <div class="description">Conditional statements</div>
+                <div class="code-block">let age = 18;
+
+if (age < 13) {
+  console.log("Child");
+} else if (age < 18) {
+  console.log("Teenager");
+} else {
+  console.log("Adult");
+}</div>
+                <div class="demo">
+                    <input type="number" id="ageInput" placeholder="Enter age" value="18">
+                    <button onclick="ifElseDemo()">Check Age</button>
+                    <div class="output" id="demo8"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">switch Statement</div>
+                <div class="description">Multiple condition branches</div>
+                <div class="code-block">let day = 3;
+let dayName;
+
+switch(day) {
+  case 1:
+    dayName = "Monday";
+    break;
+  case 2:
+    dayName = "Tuesday";
+    break;
+  case 3:
+    dayName = "Wednesday";
+    break;
+  default:
+    dayName = "Unknown";
+}</div>
+                <div class="demo">
+                    <input type="number" id="dayInput" placeholder="Enter day (1-7)" value="3" min="1" max="7">
+                    <button onclick="switchDemo()">Get Day Name</button>
+                    <div class="output" id="demo9"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Loops: for, while, do...while</div>
+                <div class="description">Repeating code blocks</div>
+                <div class="code-block">// For loop
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// While loop
+let count = 0;
+while (count < 5) {
+  console.log(count);
+  count++;
+}
+
+// Do...while (runs at least once)
+let x = 0;
+do {
+  console.log(x);
+  x++;
+} while (x < 5);</div>
+                <div class="demo">
+                    <button onclick="loopsDemo()">Run Loops Demo</button>
+                    <div class="output" id="demo10"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">for...in & for...of</div>
+                <div class="description">Iterating over collections</div>
+                <div class="code-block">let obj = {name: "John", age: 25};
+let arr = ["red", "blue", "green"];
+
+// for...in (iterates over keys/indices)
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+
+// for...of (iterates over values)
+for (let color of arr) {
+  console.log(color);
+}</div>
+                <div class="demo">
+                    <button onclick="forInOfDemo()">Run for...in/of Demo</button>
+                    <div class="output" id="demo11"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUNCTIONS -->
+        <div class="section">
+            <h2>⚙️ Functions</h2>
+
+            <div class="code-card">
+                <div class="code-title">Function Declaration</div>
+                <div class="description">Traditional function definition</div>
+                <div class="code-block">function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+console.log(greet("John"));  // "Hello, John!"</div>
+                <div class="demo">
+                    <input type="text" id="nameInput1" placeholder="Enter your name" value="John">
+                    <button onclick="functionDeclDemo()">Greet</button>
+                    <div class="output" id="demo12"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Arrow Functions</div>
+                <div class="description">Modern function syntax</div>
+                <div class="code-block">const add = (a, b) => a + b;
+const greet = name => `Hello, ${name}!`;
+const getRandom = () => Math.random();
+
+console.log(add(5, 3));           // 8
+console.log(greet("Alice"));      // Hello, Alice!</div>
+                <div class="demo">
+                    <button onclick="arrowFunctionDemo()">Run Arrow Function Demo</button>
+                    <div class="output" id="demo13"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Default Parameters & Rest Parameters</div>
+                <div class="description">Function parameters with defaults and variadic functions</div>
+                <div class="code-block">function greet(name = "Guest") {
+  console.log("Hello, " + name);
+}
+
+function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+greet();           // "Hello, Guest"
+console.log(sum(1, 2, 3, 4, 5));  // 15</div>
+                <div class="demo">
+                    <button onclick="parametersDemo()">Run Parameters Demo</button>
+                    <div class="output" id="demo14"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Higher-Order Functions</div>
+                <div class="description">Functions that work with other functions</div>
+                <div class="code-block">// Function as parameter
+function map(arr, callback) {
+  return arr.map(callback);
+}
+
+// Function as return value
+function makeMultiplier(n) {
+  return (x) => x * n;
+}
+
+const double = makeMultiplier(2);
+console.log(double(5));  // 10</div>
+                <div class="demo">
+                    <button onclick="higherOrderDemo()">Run Higher-Order Demo</button>
+                    <div class="output" id="demo15"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARRAY METHODS -->
+        <div class="section">
+            <h2>📋 Array Methods</h2>
+
+            <div class="code-card">
+                <div class="code-title">Common Array Methods</div>
+                <div class="description">Essential array operations</div>
+                <div class="code-block">let arr = [1, 2, 3, 4, 5];
+
+// map() - Transform each element
+let doubled = arr.map(x => x * 2);  // [2, 4, 6, 8, 10]
+
+// filter() - Keep elements that pass test
+let evens = arr.filter(x => x % 2 === 0);  // [2, 4]
+
+// reduce() - Combine into single value
+let sum = arr.reduce((a, b) => a + b, 0);  // 15
+
+// find() - Get first matching element
+let first = arr.find(x => x > 3);  // 4
+
+// includes() - Check if value exists
+let has3 = arr.includes(3);  // true
+
+// sort() - Sort array
+arr.sort((a, b) => a - b);</div>
+                <div class="demo">
+                    <button onclick="arrayMethodsDemo()">Run Array Methods Demo</button>
+                    <div class="output" id="demo16"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Adding & Removing Elements</div>
+                <div class="description">Modifying array contents</div>
+                <div class="code-block">let arr = [1, 2, 3];
+
+arr.push(4);           // Add at end: [1, 2, 3, 4]
+arr.pop();             // Remove from end: [1, 2, 3]
+arr.unshift(0);        // Add at start: [0, 1, 2, 3]
+arr.shift();           // Remove from start: [1, 2, 3]
+arr.splice(1, 1, 10);  // Remove 1 at index 1, insert 10: [1, 10, 3]</div>
+                <div class="demo">
+                    <button onclick="arrayModifyDemo()">Run Modify Array Demo</button>
+                    <div class="output" id="demo17"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRING METHODS -->
+        <div class="section">
+            <h2>📝 String Methods</h2>
+
+            <div class="code-card">
+                <div class="code-title">String Manipulation</div>
+                <div class="description">Common string operations</div>
+                <div class="code-block">let str = "Hello World";
+
+str.length;                    // 11
+str.toUpperCase();            // "HELLO WORLD"
+str.toLowerCase();            // "hello world"
+str.charAt(0);                // "H"
+str.indexOf("World");         // 6
+str.substring(0, 5);          // "Hello"
+str.split(" ");               // ["Hello", "World"]
+str.replace("World", "JS");   // "Hello JS"
+str.trim();                   // Remove whitespace
+str.startsWith("Hello");      // true
+str.endsWith("World");        // true
+str.includes("lo");           // true
+str.repeat(2);                // "Hello WorldHello World"</div>
+                <div class="demo">
+                    <button onclick="stringMethodsDemo()">Run String Methods Demo</button>
+                    <div class="output" id="demo18"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Template Literals</div>
+                <div class="description">String interpolation with backticks</div>
+                <div class="code-block">let name = "John";
+let age = 25;
+
+let message = `Hello, ${name}! You are ${age} years old.`;
+// "Hello, John! You are 25 years old."
+
+let multiline = `
+  Line 1
+  Line 2
+  Line 3
+`;</div>
+                <div class="demo">
+                    <input type="text" id="tplName" placeholder="Enter name" value="John">
+                    <input type="number" id="tplAge" placeholder="Enter age" value="25">
+                    <button onclick="templateLiteralDemo()">Create Message</button>
+                    <div class="output" id="demo19"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OBJECTS -->
+        <div class="section">
+            <h2>🏢 Objects & Classes</h2>
+
+            <div class="code-card">
+                <div class="code-title">Object Literals</div>
+                <div class="description">Creating objects</div>
+                <div class="code-block">let person = {
+  name: "John",
+  age: 25,
+  email: "john@example.com",
+  greet: function() {
+    return "Hello, " + this.name;
+  }
+};
+
+console.log(person.name);      // "John"
+console.log(person.greet());   // "Hello, John"</div>
+                <div class="demo">
+                    <button onclick="objectLiteralDemo()">Run Object Demo</button>
+                    <div class="output" id="demo20"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Classes</div>
+                <div class="description">Object-oriented programming</div>
+                <div class="code-block">class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    return `Hello, I'm ${this.name} and I'm ${this.age} years old.`;
+  }
+
+  haveBirthday() {
+    this.age++;
+  }
+}
+
+let person = new Person("John", 25);
+console.log(person.greet());    // "Hello, I'm John and I'm 25 years old."</div>
+                <div class="demo">
+                    <button onclick="classDemo()">Run Class Demo</button>
+                    <div class="output" id="demo21"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Object Methods & Destructuring</div>
+                <div class="description">Useful object operations</div>
+                <div class="code-block">let obj = {name: "John", age: 25, city: "NYC"};
+
+Object.keys(obj);      // ["name", "age", "city"]
+Object.values(obj);    // ["John", 25, "NYC"]
+Object.entries(obj);   // [["name","John"], ["age",25], ["city","NYC"]]
+
+// Destructuring
+const {name, age} = obj;
+console.log(name, age);  // "John" 25
+
+const [a, b, c] = [1, 2, 3];
+console.log(a);  // 1</div>
+                <div class="demo">
+                    <button onclick="destructuringDemo()">Run Destructuring Demo</button>
+                    <div class="output" id="demo22"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASYNC PROGRAMMING -->
+        <div class="section">
+            <h2>⏱️ Asynchronous Programming</h2>
+
+            <div class="code-card">
+                <div class="code-title">setTimeout & setInterval</div>
+                <div class="description">Delayed and repeated execution</div>
+                <div class="code-block">// Execute after 2 seconds
+setTimeout(() => {
+  console.log("After 2 seconds");
+}, 2000);
+
+// Execute every 1 second (10 times)
+let count = 0;
+let interval = setInterval(() => {
+  count++;
+  console.log("Count: " + count);
+  if (count === 10) clearInterval(interval);
+}, 1000);</div>
+                <div class="demo">
+                    <button onclick="setTimeoutDemo()">Run setTimeout Demo</button>
+                    <div class="output" id="demo23"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Promises</div>
+                <div class="description">Handle asynchronous operations</div>
+                <div class="code-block">let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Success!");
+  }, 2000);
+});
+
+promise
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
+
+// Promise.all() - Wait for all promises
+Promise.all([promise1, promise2])
+  .then(results => console.log(results));</div>
+                <div class="demo">
+                    <button onclick="promiseDemo()">Run Promise Demo</button>
+                    <div class="output" id="demo24"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">async & await</div>
+                <div class="description">Modern async syntax</div>
+                <div class="code-block">async function fetchData() {
+  try {
+    let response = await fetch("https://api.example.com/data");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
+
+fetchData();</div>
+                <div class="demo">
+                    <button onclick="asyncAwaitDemo()">Run async/await Demo</button>
+                    <div class="output" id="demo25"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOM MANIPULATION -->
+        <div class="section">
+            <h2>🖱️ DOM Manipulation</h2>
+
+            <div class="code-card">
+                <div class="code-title">Selecting Elements</div>
+                <div class="description">Finding elements in the DOM</div>
+                <div class="code-block">document.getElementById("id");           // Get by ID
+document.querySelector(".class");       // Get by CSS selector
+document.querySelectorAll("p");        // Get all matching
+document.getElementsByClassName("cls"); // Get by class
+document.getElementsByTagName("div");  // Get by tag</div>
+                <div class="demo">
+                    <button onclick="selectingDemo()">Run Selecting Demo</button>
+                    <div class="output" id="demo26"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Modifying Content & Attributes</div>
+                <div class="description">Changing DOM content</div>
+                <div class="code-block">let el = document.getElementById("myElement");
+
+// Change content
+el.textContent = "New text";
+el.innerHTML = "<p>New HTML</p>";
+
+// Change attributes
+el.setAttribute("data-value", "123");
+el.removeAttribute("class");
+el.className = "new-class";
+
+// Add/remove classes
+el.classList.add("active");
+el.classList.remove("inactive");
+el.classList.toggle("highlight");</div>
+                <div class="demo">
+                    <div id="targetElement" style="padding: 10px; background: #e0e0e0; border-radius: 5px; margin: 10px 0;">Change me!</div>
+                    <button onclick="modifyingDemo()">Modify Element</button>
+                    <div class="output" id="demo27"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Creating & Removing Elements</div>
+                <div class="description">Dynamically modify DOM structure</div>
+                <div class="code-block">// Create elements
+let newEl = document.createElement("div");
+newEl.textContent = "New element";
+
+// Add to DOM
+let parent = document.getElementById("container");
+parent.appendChild(newEl);
+
+// Remove from DOM
+parent.removeChild(newEl);
+
+// Or clone
+let clone = newEl.cloneNode(true);</div>
+                <div class="demo">
+                    <div id="container" style="border: 1px solid #ddd; padding: 10px; margin: 10px 0; min-height: 50px;"></div>
+                    <button onclick="creatingDemo()">Add Element</button>
+                    <button onclick="removingDemo()">Remove Element</button>
+                    <div class="output" id="demo28"></div>
+                </div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Event Listeners</div>
+                <div class="description">Responding to user interactions</div>
+                <div class="code-block">let button = document.getElementById("btn");
+
+// Add event listener
+button.addEventListener("click", function(e) {
+  console.log("Button clicked!");
+});
+
+// Other events: "change", "keydown", "mouseover", "submit", etc.
+
+// Remove event listener
+function handler() { console.log("Click"); }
+button.addEventListener("click", handler);
+button.removeEventListener("click", handler);</div>
+                <div class="demo">
+                    <input type="text" id="eventInput" placeholder="Type something..." style="display: block; margin: 10px 0;">
+                    <button id="eventBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Click Me</button>
+                    <div class="output" id="demo29"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="section">
+            <div class="highlight">
+                <strong>💡 Pro Tips:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Use <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">const</code> by default, <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">let</code> when needed, avoid <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">var</code></li>
+                    <li>Arrow functions are concise but don't have their own <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">this</code> context</li>
+                    <li>Always use strict equality <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">===</code> instead of <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">==</code></li>
+                    <li>Use <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">async/await</code> instead of <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">.then()</code> for better readability</li>
+                    <li>Always handle errors in async operations with try/catch</li>
+                    <li>Use template literals for cleaner string concatenation</li>
+                    <li>Remember that array and object methods are immutable - they don't modify the original</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo Functions
+        function varLetConstDemo() {
+            let output = `<strong>var vs let vs const:</strong><br>`;
+            output += `var x = 1; // Function scoped, can be redeclared<br>`;
+            output += `let y = 2; // Block scoped, can be reassigned<br>`;
+            output += `const z = 3; // Block scoped, cannot be reassigned<br><br>`;
+            output += `z = 5; // ❌ Error: Assignment to constant variable`;
+            document.getElementById('demo1').innerHTML = output;
+        }
+
+        function dataTypesDemo() {
+            let output = `<strong>JavaScript Data Types:</strong><br>`;
+            output += `String: "Hello" (${typeof "Hello"})<br>`;
+            output += `Number: 42 (${typeof 42})<br>`;
+            output += `Boolean: true (${typeof true})<br>`;
+            output += `Null: null (${typeof null})<br>`;
+            output += `Undefined: undefined (${typeof undefined})<br>`;
+            output += `Object: {name: "John"} (${typeof {}})<br>`;
+            output += `Array: [1,2,3] (${typeof []})`;
+            document.getElementById('demo2').innerHTML = output;
+        }
+
+        function objectsArraysDemo() {
+            let person = {name: "John", age: 25, email: "john@example.com"};
+            let colors = ["red", "blue", "green"];
+            let output = `<strong>Objects:</strong><br>`;
+            output += `${JSON.stringify(person)}<br><br>`;
+            output += `<strong>Arrays:</strong><br>`;
+            output += `${JSON.stringify(colors)}`;
+            document.getElementById('demo3').innerHTML = output;
+        }
+
+        function arithmeticDemo() {
+            let a = 10, b = 3;
+            let output = `<strong>Arithmetic Operations:</strong><br>`;
+            output += `${a} + ${b} = ${a + b}<br>`;
+            output += `${a} - ${b} = ${a - b}<br>`;
+            output += `${a} * ${b} = ${a * b}<br>`;
+            output += `${a} / ${b} = ${(a / b).toFixed(2)}<br>`;
+            output += `${a} % ${b} = ${a % b}<br>`;
+            output += `${a} ** ${b} = ${a ** b}`;
+            document.getElementById('demo4').innerHTML = output;
+        }
+
+        function comparisonDemo() {
+            let a = 5, b = "5";
+            let output = `<strong>Comparison Operations:</strong><br>`;
+            output += `${a} == "${b}" → ${a == b} (value equal)<br>`;
+            output += `${a} === "${b}" → ${a === b} (value AND type equal)<br>`;
+            output += `${a} != "${b}" → ${a != b}<br>`;
+            output += `${a} !== "${b}" → ${a !== b}<br>`;
+            output += `${a} > 3 → ${a > 3}<br>`;
+            output += `${a} < 10 → ${a < 10}`;
+            document.getElementById('demo5').innerHTML = output;
+        }
+
+        function logicalDemo() {
+            let a = true, b = false;
+            let output = `<strong>Logical Operations:</strong><br>`;
+            output += `true && false = ${a && b} (AND)<br>`;
+            output += `true || false = ${a || b} (OR)<br>`;
+            output += `!true = ${!a} (NOT)<br><br>`;
+            output += `✓ Logical operators are used in conditionals`;
+            document.getElementById('demo6').innerHTML = output;
+        }
+
+        function assignmentDemo() {
+            let x = 10;
+            let initial = x;
+            x += 5; let step1 = x;
+            x -= 3; let step2 = x;
+            x *= 2; let step3 = x;
+            x /= 4; let step4 = x;
+            let output = `<strong>Assignment Operators:</strong><br>`;
+            output += `Initial: ${initial}<br>`;
+            output += `After += 5: ${step1}<br>`;
+            output += `After -= 3: ${step2}<br>`;
+            output += `After *= 2: ${step3}<br>`;
+            output += `After /= 4: ${step4}`;
+            document.getElementById('demo7').innerHTML = output;
+        }
+
+        function ifElseDemo() {
+            let age = parseInt(document.getElementById('ageInput').value);
+            let result;
+            if (age < 13) result = "Child";
+            else if (age < 18) result = "Teenager";
+            else result = "Adult";
+            document.getElementById('demo8').innerHTML = `<strong>Age ${age}</strong> → ${result}`;
+        }
+
+        function switchDemo() {
+            let day = parseInt(document.getElementById('dayInput').value);
+            let days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            let dayName = days[day] || "Invalid";
+            document.getElementById('demo9').innerHTML = `Day ${day} → <strong>${dayName}</strong>`;
+        }
+
+        function loopsDemo() {
+            let output = `<strong>Loop Examples:</strong><br>`;
+            output += `For loop (0-4): `;
+            for (let i = 0; i < 5; i++) output += i + " ";
+            output += `<br>While loop (0-4): `;
+            let count = 0;
+            while (count < 5) { output += count + " "; count++; }
+            document.getElementById('demo10').innerHTML = output;
+        }
+
+        function forInOfDemo() {
+            let obj = {name: "John", age: 25};
+            let arr = ["red", "blue", "green"];
+            let output = `<strong>for...in (keys/indices):</strong><br>`;
+            for (let key in obj) output += `${key}: ${obj[key]}<br>`;
+            output += `<strong>for...of (values):</strong><br>`;
+            for (let color of arr) output += `${color}<br>`;
+            document.getElementById('demo11').innerHTML = output;
+        }
+
+        function functionDeclDemo() {
+            let name = document.getElementById('nameInput1').value;
+            function greet(n) { return "Hello, " + n + "!"; }
+            document.getElementById('demo12').innerHTML = greet(name);
+        }
+
+        function arrowFunctionDemo() {
+            const add = (a, b) => a + b;
+            const greet = name => `Hello, ${name}!`;
+            let output = `<strong>Arrow Functions:</strong><br>`;
+            output += `add(5, 3) = ${add(5, 3)}<br>`;
+            output += `greet("Alice") = ${greet("Alice")}<br>`;
+            document.getElementById('demo13').innerHTML = output;
+        }
+
+        function parametersDemo() {
+            function greet(name = "Guest") { return "Hello, " + name; }
+            function sum(...numbers) { return numbers.reduce((a, b) => a + b, 0); }
+            let output = `<strong>Parameters:</strong><br>`;
+            output += `greet() = ${greet()}<br>`;
+            output += `greet("John") = ${greet("John")}<br>`;
+            output += `sum(1, 2, 3, 4, 5) = ${sum(1, 2, 3, 4, 5)}`;
+            document.getElementById('demo14').innerHTML = output;
+        }
+
+        function higherOrderDemo() {
+            const makeMultiplier = (n) => (x) => x * n;
+            const double = makeMultiplier(2);
+            const triple = makeMultiplier(3);
+            let output = `<strong>Higher-Order Functions:</strong><br>`;
+            output += `makeMultiplier(2)(5) = ${double(5)}<br>`;
+            output += `makeMultiplier(3)(5) = ${triple(5)}`;
+            document.getElementById('demo15').innerHTML = output;
+        }
+
+        function arrayMethodsDemo() {
+            let arr = [1, 2, 3, 4, 5];
+            let output = `<strong>Array Methods:</strong><br>`;
+            output += `Original: [${arr}]<br>`;
+            output += `map(x*2): [${arr.map(x => x * 2)}]<br>`;
+            output += `filter(even): [${arr.filter(x => x % 2 === 0)}]<br>`;
+            output += `reduce(sum): ${arr.reduce((a, b) => a + b, 0)}<br>`;
+            output += `find(>3): ${arr.find(x => x > 3)}`;
+            document.getElementById('demo16').innerHTML = output;
+        }
+
+        function arrayModifyDemo() {
+            let arr = [1, 2, 3];
+            let output = `<strong>Modifying Arrays:</strong><br>`;
+            output += `Original: [${arr}]<br>`;
+            arr.push(4);
+            output += `After push(4): [${arr}]<br>`;
+            arr.pop();
+            output += `After pop(): [${arr}]<br>`;
+            arr.unshift(0);
+            output += `After unshift(0): [${arr}]`;
+            document.getElementById('demo17').innerHTML = output;
+        }
+
+        function stringMethodsDemo() {
+            let str = "Hello World";
+            let output = `<strong>String Methods:</strong><br>`;
+            output += `Original: "${str}"<br>`;
+            output += `length: ${str.length}<br>`;
+            output += `toUpperCase(): "${str.toUpperCase()}"<br>`;
+            output += `toLowerCase(): "${str.toLowerCase()}"<br>`;
+            output += `substring(0,5): "${str.substring(0, 5)}"<br>`;
+            output += `split(" "): ["${str.split(" ").join('", "')}"]`;
+            document.getElementById('demo18').innerHTML = output;
+        }
+
+        function templateLiteralDemo() {
+            let name = document.getElementById('tplName').value;
+            let age = document.getElementById('tplAge').value;
+            let message = `Hello, ${name}! You are ${age} years old.`;
+            document.getElementById('demo19').innerHTML = `<strong>Template Literal:</strong><br>${message}`;
+        }
+
+        function objectLiteralDemo() {
+            let person = {name: "John", age: 25, email: "john@example.com", greet() { return `Hello, ${this.name}`; }};
+            let output = `<strong>Object Literal:</strong><br>`;
+            output += `Name: ${person.name}<br>`;
+            output += `Age: ${person.age}<br>`;
+            output += `Email: ${person.email}<br>`;
+            output += `Greet: ${person.greet()}`;
+            document.getElementById('demo20').innerHTML = output;
+        }
+
+        function classDemo() {
+            class Person {
+                constructor(name, age) { this.name = name; this.age = age; }
+                greet() { return `Hello, I'm ${this.name} and I'm ${this.age} years old.`; }
+            }
+            let person = new Person("John", 25);
+            let output = `<strong>Class Instance:</strong><br>`;
+            output += `${person.greet()}`;
+            document.getElementById('demo21').innerHTML = output;
+        }
+
+        function destructuringDemo() {
+            let obj = {name: "John", age: 25, city: "NYC"};
+            const {name, age} = obj;
+            let output = `<strong>Destructuring:</strong><br>`;
+            output += `Object: ${JSON.stringify(obj)}<br>`;
+            output += `After destructuring: name="${name}", age=${age}<br>`;
+            output += `Keys: ${Object.keys(obj).join(", ")}<br>`;
+            output += `Values: ${Object.values(obj).join(", ")}`;
+            document.getElementById('demo22').innerHTML = output;
+        }
+
+        function setTimeoutDemo() {
+            let output = `Executing setTimeout...<br>`;
+            document.getElementById('demo23').innerHTML = output;
+            setTimeout(() => {
+                document.getElementById('demo23').innerHTML = output + `✓ Executed after 2 seconds!`;
+            }, 2000);
+        }
+
+        function promiseDemo() {
+            let output = `Creating Promise...<br>`;
+            document.getElementById('demo24').innerHTML = output;
+            let promise = new Promise((resolve) => {
+                setTimeout(() => resolve("Promise Resolved!"), 2000);
+            });
+            promise.then(result => {
+                document.getElementById('demo24').innerHTML = output + `✓ ${result}`;
+            });
+        }
+
+        function asyncAwaitDemo() {
+            let output = `Simulating async operation...<br>`;
+            document.getElementById('demo25').innerHTML = output;
+            (async function() {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                document.getElementById('demo25').innerHTML = output + `✓ async/await completed!`;
+            })();
+        }
+
+        function selectingDemo() {
+            let output = `<strong>Selecting Elements:</strong><br>`;
+            output += `getElementById('id') - Get by ID<br>`;
+            output += `querySelector('.class') - Get by CSS selector<br>`;
+            output += `querySelectorAll('p') - Get all matching<br>`;
+            output += `getElementsByClassName('cls') - Get by class`;
+            document.getElementById('demo26').innerHTML = output;
+        }
+
+        function modifyingDemo() {
+            let el = document.getElementById('targetElement');
+            el.innerHTML = "✓ Modified with innerHTML!";
+            el.style.background = "#f093fb";
+            el.style.color = "white";
+            document.getElementById('demo27').innerHTML = `Element modified!`;
+        }
+
+        function creatingDemo() {
+            let newEl = document.createElement("div");
+            newEl.style.padding = "10px";
+            newEl.style.background = "#f093fb";
+            newEl.style.color = "white";
+            newEl.style.margin = "5px 0";
+            newEl.style.borderRadius = "5px";
+            newEl.textContent = `New element created at ${new Date().toLocaleTimeString()}`;
+            document.getElementById('container').appendChild(newEl);
+            document.getElementById('demo28').innerHTML = `✓ Element added to container`;
+        }
+
+        function removingDemo() {
+            let container = document.getElementById('container');
+            if (container.lastChild) {
+                container.removeChild(container.lastChild);
+                document.getElementById('demo28').innerHTML = `✓ Last element removed`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let eventBtn = document.getElementById('eventBtn');
+            if (eventBtn) {
+                eventBtn.addEventListener('click', function() {
+                    document.getElementById('demo29').innerHTML = `✓ Button clicked at ${new Date().toLocaleTimeString()}`;
+                });
+            }
+            let eventInput = document.getElementById('eventInput');
+            if (eventInput) {
+                eventInput.addEventListener('keydown', function(e) {
+                    document.getElementById('demo29').innerHTML = `✓ Key pressed: ${e.key}`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

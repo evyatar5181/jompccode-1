@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpCode | Login</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1e293b, #000000);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* --- ENTRANCE ANIMATION (כניסה) --- */
+        @keyframes entranceEffect {
+            0% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.8);
+                filter: blur(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* --- EXIT ANIMATION (יציאה למטה והתכווצות) --- */
+        .exit-down-shrink {
+            opacity: 0 !important;
+            transform: translateY(150px) scale(0.5) !important;
+            filter: blur(10px);
+            transition: all 0.9s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            pointer-events: none;
+        }
+
+        /* --- LOGIN CARD --- */
+        .login-card {
+            width: 420px;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            animation: entranceEffect 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+            transition: all 0.5s ease;
+        }
+
+        /* אפקט הצלחה לכרטיס */
+        .card-success {
+            box-shadow: 0 0 60px rgba(16, 185, 129, 0.4);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #38bdf8;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* שגיאה בשדות */
+        .input-error {
+            border-color: #ef4444 !important;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #38bdf8, #1d4ed8);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* כפתור במצב הצלחה */
+        .btn-success {
+            background: linear-gradient(45deg, #10b981, #059669) !important;
+            transform: scale(1.05);
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card" id="loginCard">
+        <h1 id="mainTitle">JumpCode</h1>
+        
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username" autocomplete="off">
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <button class="submit-btn" id="loginBtn" onclick="handleLogin()">
+            <span id="btnText">Login</span>
+            <svg id="successIcon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const userField = document.getElementById('username');
+            const passField = document.getElementById('password');
+            const btn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+            const successIcon = document.getElementById('successIcon');
+            const card = document.getElementById('loginCard');
+            const title = document.getElementById('mainTitle');
+
+            const user = userField.value;
+            const pass = passField.value;
+
+            // איפוס שגיאות קודמות
+            userField.classList.remove('input-error');
+            passField.classList.remove('input-error');
+
+            if (user === "evyatar5181" && pass === "evyatar2013") {
+                
+                // --- אפקט כניסה מוצלח ---
+                
+                // 1. שינוי כפתור
+                btn.disabled = true;
+                btnText.innerText = "Success";
+                successIcon.classList.remove('hidden');
+                btn.classList.add('btn-success');
+                
+                // 2. אפקט לכרטיס ולכותרת
+                card.classList.add('card-success');
+                title.style.color = "#10b981";
+                title.style.textShadow = "0 0 20px rgba(16, 185, 129, 0.6)";
+
+                // 3. יציאה חלקה למטה עם התכווצות
+                setTimeout(() => {
+                    card.classList.add('exit-down-shrink');
+                    
+                    setTimeout(() => {
+                        window.location.href = "jumpcode.html";
+                    }, 900);
+                }, 600);
+
+            } else {
+                // אפקט שגיאה
+                userField.classList.add('input-error');
+                passField.classList.add('input-error');
+                
+                // רעידת הכפתור
+                btn.style.animation = 'shake 0.4s ease';
+                setTimeout(() => btn.style.animation = '', 400);
+            }
+        }
+    </script>
+
+</body>
+</html>

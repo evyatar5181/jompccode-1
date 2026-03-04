@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpCode - Html code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* changed to a radial gradient as requested */
+            background: radial-gradient(circle at center, #1e293b, #000000, #1e293b);
+            /* primary text color set to a blue tint with shadow */
+            color: #38bdf8;
+            
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: slideDown 0.6s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        img {
+            animation: slideUp 0.6s ease;
+            position: fixed ;
+            top: 50%;
+            right: 20px;
+            transform: rotate(-45deg);
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 30px auto;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideUp 0.6s ease;
+        }
+
+        .section h2 {
+            color: #38bdf8;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+
+        .html-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .html-title {
+            font-weight: 700;
+            color: #38bdf8;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            border: 1px solid #444;
+        }
+
+        .demo {
+            margin-top: 15px;
+            padding: 20px;
+            background: #fff5f7;
+            border-radius: 8px;
+            border: 2px solid #f5576c;
+        }
+
+        .demo-box {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .button-demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin: 5px 0;
+            display: block;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #f5576c;
+            box-shadow: 0 0 10px rgba(245, 87, 108, 0.3);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px 0;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #f0f0f0;
+            font-weight: 600;
+            color: #f5576c;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .semantic-example {
+            border: 2px solid #f5576c;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            background: white;
+        }
+
+        .semantic-example > * {
+            margin: 10px 0;
+        }
+
+        header.semantic-example {
+            background: #f5f5f5;
+            border-left: 4px solid #f5576c;
+        }
+
+        nav.semantic-example {
+            background: #f5f5f5;
+        }
+
+        nav.semantic-example a {
+            display: inline-block;
+            margin-right: 15px;
+            color: #f5576c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        nav.semantic-example a:hover {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        footer.semantic-example {
+            background: #f5f5f5;
+            text-align: center;
+            border-top: 3px solid #f5576c;
+        }
+
+        .list-demo {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .list-demo ol, .list-demo ul {
+            margin-left: 20px;
+        }
+
+        .list-demo li {
+            margin: 8px 0;
+        }
+
+        .video-demo, .audio-demo {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .meta-info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4d96ff;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Complete HTML Guide</h1>
+            <p>From Basic Tags to Advanced Semantic HTML</p>
+            <!-- link back to menu.html -->
+         <div style="text-align:center; margin:20px 0;">
+            <button onclick="window.location.href='jumpcode-code.html'" style="padding:10px 20px; font-size:1em; border:none; border-radius:8px; background:#38bdf8; color:#0f172a; cursor:pointer;">Go to Menu</button>
+        </div>
+        </header>
+        <br>
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="HTML Icon" style="width: 100px; display: block; margin: 0 auto 30px auto;">
+
+        <!-- DOCUMENT STRUCTURE -->
+        <div class="section">
+            <h2>🏗️ Document Structure</h2>
+
+            <div class="html-card">
+                <div class="html-title">HTML Document Template</div>
+                <div class="description">Every HTML document should start with this structure</div>
+                <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Your content here --&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="meta-info">
+                    <strong>DOCTYPE:</strong> Declares the document type as HTML5<br>
+                    <strong>&lt;html&gt;:</strong> Root element of the document<br>
+                    <strong>&lt;head&gt;:</strong> Contains metadata and scripts<br>
+                    <strong>&lt;body&gt;:</strong> Contains all visible content
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Meta Tags</div>
+                <div class="description">Provide metadata about the HTML document</div>
+                <div class="code-block">&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Page description"&gt;
+&lt;meta name="keywords" content="keywords, here"&gt;
+&lt;meta name="author" content="Author Name"&gt;
+&lt;meta name="theme-color" content="#667eea"&gt;</div>
+            </div>
+        </div>
+
+        <!-- TEXT ELEMENTS -->
+        <div class="section">
+            <h2>📝 Text Elements</h2>
+
+            <div class="html-card">
+                <div class="html-title">Heading Tags (h1-h6)</div>
+                <div class="description">Define headings and hierarchy</div>
+                <div class="code-block">&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Sub-subheading&lt;/h3&gt;
+&lt;h4&gt;Small heading&lt;/h4&gt;
+&lt;h5&gt;Smaller heading&lt;/h5&gt;
+&lt;h6&gt;Smallest heading&lt;/h6&gt;</div>
+                <div class="demo">
+                    <h1>This is H1</h1>
+                    <h2>This is H2</h2>
+                    <h3>This is H3</h3>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Paragraphs & Text Formatting</div>
+                <div class="description">Basic text and formatting elements</div>
+                <div class="code-block">&lt;p&gt;Regular paragraph text&lt;/p&gt;
+&lt;strong&gt;Bold important text&lt;/strong&gt;
+&lt;em&gt;Emphasized italic text&lt;/em&gt;
+&lt;b&gt;Bold text&lt;/b&gt;
+&lt;i&gt;Italic text&lt;/i&gt;
+&lt;u&gt;Underlined text&lt;/u&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;small&gt;Small text&lt;/small&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;
+&lt;ins&gt;Inserted text&lt;/ins&gt;
+&lt;sub&gt;Subscript&lt;/sub&gt;
+&lt;sup&gt;Superscript&lt;/sup&gt;
+&lt;code&gt;Code snippet&lt;/code&gt;</div>
+                <div class="demo">
+                    <p><strong>Bold important text</strong></p>
+                    <p><em>Emphasized italic text</em></p>
+                    <p><mark>Highlighted text</mark></p>
+                    <p>This has <sub>subscript</sub> and <sup>superscript</sup></p>
+                    <p><del>Deleted</del> and <ins>inserted</ins> text</p>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Lists</div>
+                <div class="description">Organize content with lists</div>
+                <div class="code-block">&lt;!-- Unordered List --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered List --&gt;
+&lt;ol&gt;
+  &lt;li&gt;First&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Description List --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;Term&lt;/dt&gt;
+  &lt;dd&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;</div>
+                <div class="demo">
+                    <div class="list-demo">
+                        <strong>Unordered List:</strong>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2</li>
+                            <li>Item 3</li>
+                        </ul>
+                        <strong>Ordered List:</strong>
+                        <ol>
+                            <li>First</li>
+                            <li>Second</li>
+                            <li>Third</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Blockquote & Preformatted Text</div>
+                <div class="description">Display quotes and code</div>
+                <div class="code-block">&lt;blockquote cite="https://example.com"&gt;
+  This is a quote from somewhere
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;
+function hello() {
+  console.log("Hello World");
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr&gt;  &lt;!-- Horizontal rule --&gt;</div>
+            </div>
+        </div>
+
+        <!-- LINKS & MEDIA -->
+        <div class="section">
+            <h2>🔗 Links & Media</h2>
+
+            <div class="html-card">
+                <div class="html-title">Anchor Tags & Links</div>
+                <div class="description">Create links and navigation</div>
+                <div class="code-block">&lt;a href="https://example.com"&gt;External link&lt;/a&gt;
+&lt;a href="/page.html"&gt;Internal link&lt;/a&gt;
+&lt;a href="#section"&gt;Anchor link&lt;/a&gt;
+&lt;a href="page.html" target="_blank"&gt;Open in new tab&lt;/a&gt;
+&lt;a href="mailto:email@example.com"&gt;Email link&lt;/a&gt;
+&lt;a href="tel:+1234567890"&gt;Phone link&lt;/a&gt;
+&lt;a href="document.pdf" download&gt;Download&lt;/a&gt;</div>
+                <div class="demo">
+                    <a href="#" style="color: #f5576c; margin: 5px; display: inline-block;">External Link</a>
+                    <a href="mailto:example@email.com" style="color: #f5576c; margin: 5px; display: inline-block;">Email Link</a>
+                    <a href="tel:+1234567890" style="color: #f5576c; margin: 5px; display: inline-block;">Phone Link</a>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Images</div>
+                <div class="description">Embed images in your page</div>
+                <div class="code-block">&lt;img src="image.jpg" alt="Description"&gt;
+&lt;img src="image.jpg" alt="Description" width="200" height="150"&gt;
+&lt;img src="image.jpg" alt="Description" loading="lazy"&gt;
+
+&lt;!-- Image with caption --&gt;
+&lt;figure&gt;
+  &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;figcaption&gt;Image caption&lt;/figcaption&gt;
+&lt;/figure&gt;</div>
+                <div class="meta-info">
+                    <strong>Always include alt text</strong> for accessibility and SEO<br>
+                    <strong>Use loading="lazy"</strong> for better performance
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Audio & Video</div>
+                <div class="description">Embed multimedia content</div>
+                <div class="code-block">&lt;!-- Audio --&gt;
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  Your browser doesn't support audio element
+&lt;/audio&gt;
+
+&lt;!-- Video --&gt;
+&lt;video controls width="300" height="200"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Your browser doesn't support video element
+&lt;/video&gt;
+
+&lt;!-- Embedded YouTube --&gt;
+&lt;iframe width="300" height="200" 
+  src="https://www.youtube.com/embed/VIDEO_ID"&gt;
+&lt;/iframe&gt;</div>
+            </div>
+        </div>
+
+        <!-- FORMS -->
+        <div class="section">
+            <h2>📋 Forms & Input Elements</h2>
+
+            <div class="html-card">
+                <div class="html-title">Form Structure</div>
+                <div class="description">Create interactive forms</div>
+                <div class="code-block">&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" id="username" name="username" required&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email"&gt;
+
+  &lt;label for="message"&gt;Message:&lt;/label&gt;
+  &lt;textarea id="message" name="message" rows="4"&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;button type="reset"&gt;Reset&lt;/button&gt;
+&lt;/form&gt;</div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Input Types</div>
+                <div class="description">Various input field types</div>
+                <div class="code-block">&lt;input type="text" placeholder="Text input"&gt;
+&lt;input type="email" placeholder="Email"&gt;
+&lt;input type="password" placeholder="Password"&gt;
+&lt;input type="number" min="1" max="100"&gt;
+&lt;input type="date"&gt;
+&lt;input type="time"&gt;
+&lt;input type="color"&gt;
+&lt;input type="range" min="0" max="100"&gt;
+&lt;input type="checkbox"&gt; Option
+&lt;input type="radio" name="group"&gt; Option
+&lt;input type="file"&gt;
+&lt;input type="search" placeholder="Search..."&gt;
+&lt;input type="url" placeholder="URL"&gt;</div>
+                <div class="demo">
+                    <form style="max-width: 300px;">
+                        <div class="form-group">
+                            <label for="demo-name">Name:</label>
+                            <input type="text" id="demo-name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-email">Email:</label>
+                            <input type="email" id="demo-email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-age">Age:</label>
+                            <input type="number" id="demo-age" min="1" max="120">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"> Subscribe to newsletter
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Select & Datalist</div>
+                <div class="description">Dropdown menus and options</div>
+                <div class="code-block">&lt;select&gt;
+  &lt;option&gt;Choose an option&lt;/option&gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;input type="text" list="options"&gt;
+&lt;datalist id="options"&gt;
+  &lt;option value="Option 1"&gt;
+  &lt;option value="Option 2"&gt;
+&lt;/datalist&gt;</div>
+                <div class="demo">
+                    <select style="max-width: 300px; padding: 10px; border: 2px solid #ddd; border-radius: 6px;">
+                        <option>Choose an option</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLES -->
+        <div class="section">
+            <h2>📊 Tables</h2>
+
+            <div class="html-card">
+                <div class="html-title">Table Structure</div>
+                <div class="description">Create data tables</div>
+                <div class="code-block">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Data 1&lt;/td&gt;
+      &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Footer 1&lt;/th&gt;
+      &lt;th&gt;Footer 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</div>
+                <div class="demo">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>25</td>
+                                <td>New York</td>
+                            </tr>
+                            <tr>
+                                <td>Alice</td>
+                                <td>30</td>
+                                <td>London</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEMANTIC HTML -->
+        <div class="section">
+            <h2>🏛️ Semantic HTML5</h2>
+
+            <div class="html-card">
+                <div class="html-title">Semantic Elements</div>
+                <div class="description">Meaningful HTML structure for better SEO and accessibility</div>
+                <div class="code-block">&lt;header&gt; - Header of page or section
+&lt;nav&gt; - Navigation menu
+&lt;main&gt; - Main content
+&lt;article&gt; - Independent article content
+&lt;section&gt; - Thematic section
+&lt;aside&gt; - Sidebar or related content
+&lt;footer&gt; - Footer of page or section
+&lt;figure&gt; - Image with caption
+&lt;details&gt; - Expandable content
+&lt;summary&gt; - Summary of details
+&lt;time&gt; - Date/time
+&lt;address&gt; - Contact information
+&lt;mark&gt; - Highlighted/marked text</div>
+                <div class="demo">
+                    <header class="semantic-example">
+                        <h2>This is a Header</h2>
+                    </header>
+                    <nav class="semantic-example">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Contact</a>
+                    </nav>
+                    <article class="semantic-example">
+                        <h3>Article Title</h3>
+                        <p>This is article content. Published on <time>2024-01-15</time></p>
+                    </article>
+                    <footer class="semantic-example">
+                        <p>&copy; 2024 Example Site. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Details & Summary</div>
+                <div class="description">Expandable content sections</div>
+                <div class="code-block">&lt;details&gt;
+  &lt;summary&gt;Click to expand&lt;/summary&gt;
+  &lt;p&gt;This content is hidden by default&lt;/p&gt;
+&lt;/details&gt;</div>
+                <div class="demo">
+                    <details style="padding: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                        <summary style="cursor: pointer; font-weight: 600;">Click to expand</summary>
+                        <p style="margin-top: 10px;">This content is hidden by default and appears when you click the summary!</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+
+        <!-- ATTRIBUTES -->
+        <div class="section">
+            <h2>⚙️ Global Attributes</h2>
+
+            <div class="html-card">
+                <div class="html-title">Common Attributes</div>
+                <div class="description">Attributes that can be used on any element</div>
+                <div class="code-block">&lt;div id="unique"&gt; - Unique identifier
+&lt;div class="class-name"&gt; - CSS class
+&lt;div style="color: red;"&gt; - Inline styles
+&lt;div title="Tooltip"&gt; - Tooltip on hover
+&lt;div lang="en"&gt; - Language
+&lt;div data-custom="value"&gt; - Custom data attribute
+&lt;div hidden&gt; - Hide element
+&lt;div disabled&gt; - Disable element
+&lt;div contenteditable="true"&gt; - Make editable
+&lt;div draggable="true"&gt; - Draggable element
+&lt;div role="button"&gt; - ARIA role
+&lt;div aria-label="Description"&gt; - Accessible label</div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Event Attributes</div>
+                <div class="description">Handle user interactions</div>
+                <div class="code-block">&lt;button onclick="alert('Clicked')"&gt;Click&lt;/button&gt;
+&lt;input onchange="handleChange()"&gt;
+&lt;input onfocus="handleFocus()"&gt;
+&lt;input onblur="handleBlur()"&gt;
+&lt;input onkeydown="handleKeyDown()"&gt;
+&lt;input onkeyup="handleKeyUp()"&gt;
+&lt;div onmouseover="handleHover()"&gt;Hover me&lt;/div&gt;
+&lt;div onmouseout="handleMouseOut()"&gt;
+&lt;form onsubmit="handleSubmit()"&gt;</div>
+                <div class="demo">
+                    <button onclick="alert('Button clicked!')">Click Me</button>
+                    <input type="text" onchange="this.style.borderColor='#f5576c'" placeholder="Change me" style="max-width: 300px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- BEST PRACTICES -->
+        <div class="section">
+            <h2>✨ Best Practices</h2>
+
+            <div class="html-card">
+                <div class="html-title">Accessibility (A11y)</div>
+                <div class="description">Make your site accessible to everyone</div>
+                <div class="code-block">&lt;!-- Always use alt text for images --&gt;
+&lt;img src="image.jpg" alt="Description of image"&gt;
+
+&lt;!-- Use semantic HTML --&gt;
+&lt;button&gt;Click me&lt;/button&gt;  instead of &lt;div onclick="..."&gt;
+
+&lt;!-- Use proper headings hierarchy --&gt;
+&lt;h1&gt;Main title&lt;/h1&gt;
+&lt;h2&gt;Subsection&lt;/h2&gt;
+
+&lt;!-- Label form inputs --&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input id="email" type="email"&gt;
+
+&lt;!-- Use ARIA attributes when needed --&gt;
+&lt;div role="alert"&gt;Important message&lt;/div&gt;</div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">SEO Best Practices</div>
+                <div class="description">Optimize your site for search engines</div>
+                <div class="code-block">&lt;!-- Use descriptive titles --&gt;
+&lt;title&gt;Specific Page Title - Site Name&lt;/title&gt;
+
+&lt;!-- Add meta description --&gt;
+&lt;meta name="description" content="Page description 150-160 chars"&gt;
+
+&lt;!-- Use semantic HTML --&gt;
+&lt;h1&gt;Main keyword&lt;/h1&gt;
+&lt;h2&gt;Related keywords&lt;/h2&gt;
+
+&lt;!-- Use descriptive alt text --&gt;
+&lt;img alt="Descriptive alt text"&gt;
+
+&lt;!-- Create clean URLs --&gt;
+&lt;a href="/blog/article-title"&gt;Article Title&lt;/a&gt;
+
+&lt;!-- Use schema.org markup --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article"
+}
+&lt;/script&gt;</div>
+            </div>
+
+            <div class="html-card">
+                <div class="html-title">Performance Tips</div>
+                <div class="description">Optimize page loading and performance</div>
+                <div class="code-block">&lt;!-- Optimize images --&gt;
+&lt;img src="image.jpg" loading="lazy"&gt;
+
+&lt;!-- Use appropriate image formats --&gt;
+&lt;picture&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;img src="image.jpg" alt="Fallback"&gt;
+&lt;/picture&gt;
+
+&lt;!-- Minimize CSS --&gt;
+&lt;link rel="stylesheet" href="style.min.css"&gt;
+
+&lt;!-- Place scripts before closing body --&gt;
+&lt;script src="script.min.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Use async for non-critical scripts --&gt;
+&lt;script async src="analytics.js"&gt;&lt;/script&gt;
+
+&lt;!-- Preload important resources --&gt;
+&lt;link rel="preload" href="font.woff2" as="font"&gt;</div>
+            </div>
+        </div>
+
+        <!-- QUICK REFERENCE -->
+        <div class="section">
+            <h2>📚 Quick Reference Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;h1&gt; - &lt;h6&gt;</td>
+                        <td>Headings</td>
+                        <td>&lt;h1&gt;Main Title&lt;/h1&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;p&gt;</td>
+                        <td>Paragraph</td>
+                        <td>&lt;p&gt;Text content&lt;/p&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;a&gt;</td>
+                        <td>Hyperlink</td>
+                        <td>&lt;a href="url"&gt;Link&lt;/a&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;img&gt;</td>
+                        <td>Image</td>
+                        <td>&lt;img src="image.jpg" alt="..."&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;button&gt;</td>
+                        <td>Clickable button</td>
+                        <td>&lt;button&gt;Click&lt;/button&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;input&gt;</td>
+                        <td>Form input</td>
+                        <td>&lt;input type="text"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;form&gt;</td>
+                        <td>Form container</td>
+                        <td>&lt;form action="/submit"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;table&gt;</td>
+                        <td>Data table</td>
+                        <td>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;ul&gt; / &lt;ol&gt;</td>
+                        <td>Lists</td>
+                        <td>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;div&gt;</td>
+                        <td>Container</td>
+                        <td>&lt;div&gt;Content&lt;/div&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;span&gt;</td>
+                        <td>Inline container</td>
+                        <td>&lt;span&gt;Inline&lt;/span&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;header&gt;</td>
+                        <td>Page header</td>
+                        <td>&lt;header&gt;...&lt;/header&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TIPS -->
+        <div class="section">
+            <div class="highlight">
+                <strong>💡 Pro Tips:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li><strong>Always include DOCTYPE:</strong> <code style="background: #f0f0f0; padding: 2px 6px;">&lt;!DOCTYPE html&gt;</code> at the start</li>
+                    <li><strong>Use semantic HTML:</strong> It improves SEO, accessibility, and code readability</li>
+                    <li><strong>Always add alt text to images:</strong> Essential for accessibility and SEO</li>
+                    <li><strong>Use proper heading hierarchy:</strong> Don't skip from h1 directly to h3</li>
+                    <li><strong>Associate labels with inputs:</strong> Use matching id and for attributes</li>
+                    <li><strong>Validate your HTML:</strong> Use W3C HTML Validator</li>
+                    <li><strong>Use lowercase for element names:</strong> HTML is case-insensitive but lowercase is standard</li>
+                    <li><strong>Close all tags properly:</strong> Some are self-closing like &lt;img&gt;, &lt;input&gt;, &lt;br&gt;, &lt;hr&gt;</li>
+                    <li><strong>Use meaningful class and id names:</strong> Avoid names like "box1", "div2", use "hero-section", "main-nav"</li>
+                    <li><strong>Keep HTML semantic-focused:</strong> Use CSS for styling, not HTML attributes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
